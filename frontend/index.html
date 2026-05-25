@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student Performance Prediction System</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <div class="hero-left">
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    AI/ML Academic Intelligence Platform
+                </div>
+
+                <h1>Student Performance Prediction System</h1>
+
+                <p class="hero-subtitle">
+                    A machine learning powered academic analytics system that predicts student score,
+                    pass/fail status, and academic risk level using performance indicators.
+                </p>
+
+                
+
+            <div class="hero-right">
+                <div class="status-card">
+                    <span id="backendStatusDot" class="status-dot offline"></span>
+                    <div>
+                        <strong id="backendStatusText">Checking backend...</strong>
+                        <p>API service status</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <div class="panel input-panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-kicker">Input Parameters</span>
+                        <h2>Student Details</h2>
+                    </div>
+                    <div class="panel-icon">🎓</div>
+                </div>
+
+                <div id="predictionForm" class="form-grid">
+                    <label>
+                        Student Name
+                        <input type="text" id="studentName" placeholder="Example: Rahul Sharma" />
+                    </label>
+
+                    <label>
+                        Study Hours per Day
+                        <input type="number" id="studyHours" min="0" max="24" step="0.1" value="4" />
+                    </label>
+
+                    <label>
+                        Attendance Percentage
+                        <input type="number" id="attendance" min="0" max="100" step="0.1" value="80" />
+                    </label>
+
+                    <label>
+                        Previous Marks
+                        <input type="number" id="previousMarks" min="0" max="100" step="0.1" value="65" />
+                    </label>
+
+                    <label>
+                        Assignments Completed
+                        <input type="number" id="assignmentsCompleted" min="0" max="10" step="1" value="7" />
+                    </label>
+
+                    <label>
+                        Sleep Hours per Day
+                        <input type="number" id="sleepHours" min="0" max="24" step="0.1" value="7" />
+                    </label>
+
+                    <label>
+                        Internet Access
+                        <select id="internetAccess">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Extracurricular Activity
+                        <select id="extracurricular">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </label>
+
+                    <button type="button" id="predictButton">
+                        Generate Prediction
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel result-panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="panel-kicker">ML Output</span>
+                        <h2>Prediction Result</h2>
+                    </div>
+                    <div class="panel-icon purple">📊</div>
+                </div>
+
+                <div id="resultBox" class="empty-result">
+                    <div class="empty-icon">📈</div>
+                    <strong>No prediction generated yet</strong>
+                    <p>Enter student details and click Generate Prediction.</p>
+                </div>
+
+                <div class="risk-box">
+                    <h3>Risk Level Guide</h3>
+
+                    <div class="risk-item low-risk">
+                        <span></span>
+                        <div>
+                            <strong>Low Risk</strong>
+                            <p>Student is performing well.</p>
+                        </div>
+                    </div>
+
+                    <div class="risk-item medium-risk">
+                        <span></span>
+                        <div>
+                            <strong>Medium Risk</strong>
+                            <p>Student needs focused improvement.</p>
+                        </div>
+                    </div>
+
+                    <div class="risk-item high-risk">
+                        <span></span>
+                        <div>
+                            <strong>High Risk</strong>
+                            <p>Student may need urgent academic support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel history-panel">
+            <div class="history-header">
+                <div>
+                    <span class="panel-kicker">Stored Records</span>
+                    <h2>Prediction History</h2>
+                    <p>Latest 50 predictions are saved in SQLite database.</p>
+                </div>
+
+                <button type="button" id="clearHistoryButton" class="clear-btn">
+                    Clear History
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                            <th>Risk</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historyTableBody">
+                        <tr>
+                            <td colspan="6">No history loaded.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
