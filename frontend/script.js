@@ -1,4 +1,5 @@
-const API_BASE = "http://127.0.0.1:8000";
+
+const API_BASE = "https://student-performance-prediction-system-ph3s.onrender.com";
 
 const predictButton = document.getElementById("predictButton");
 const resultBox = document.getElementById("resultBox");
